@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.quickstart.topic;
+package wjc.rabbitmq.quickstart.topic;
 
 import com.rabbitmq.client.*;
 

@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.returnListener;
+package wjc.rabbitmq.returnListener;
 
 import com.rabbitmq.client.*;
 

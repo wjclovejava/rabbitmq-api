@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.dlx;
+package wjc.rabbitmq.dlx;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;

@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.quickstart.direct;
+package wjc.rabbitmq.quickstart.topic;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeoutException;
  * @author: wjc
  * @create: 2019-07-24 17:40
  **/
-public class DirectProducer {
+public class TopicProducer {
 
     public static void main(String[] args) {
         //1.创建ConnectionFactory
@@ -28,13 +28,17 @@ public class DirectProducer {
             //3.connection创建Channel
             Channel channel = connection.createChannel();
             //4.声明
-            String exchangeName="test_direct_exchange";
-            String routingKey="test.direct";
+            String exchangeName="test_topic_exchange";
+            String routingKey1="user.save";
+            String routingKey2="user.update";
+            String routingKey3="user.delete.abc";
+
             //5.通过channel发送数据
-            for(int i=0;i<5;i++){
-                String msg="hello ,rabbitmq";
-                channel.basicPublish(exchangeName,routingKey,null,msg.getBytes());
-            }
+            String msg="hello ,rabbitmq";
+            channel.basicPublish(exchangeName,routingKey1,null,msg.getBytes());
+            channel.basicPublish(exchangeName,routingKey2,null,msg.getBytes());
+            channel.basicPublish(exchangeName,routingKey3,null,msg.getBytes());
+
             //5.关闭连接
             channel.close();
             connection.close();

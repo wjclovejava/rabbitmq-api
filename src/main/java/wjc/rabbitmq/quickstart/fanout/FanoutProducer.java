@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.quickstart.topic;
+package wjc.rabbitmq.quickstart.fanout;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeoutException;
  * @author: wjc
  * @create: 2019-07-24 17:40
  **/
-public class TopicProducer {
+public class FanoutProducer {
 
     public static void main(String[] args) {
         //1.创建ConnectionFactory
@@ -28,16 +28,13 @@ public class TopicProducer {
             //3.connection创建Channel
             Channel channel = connection.createChannel();
             //4.声明
-            String exchangeName="test_topic_exchange";
-            String routingKey1="user.save";
-            String routingKey2="user.update";
-            String routingKey3="user.delete.abc";
-
+            String exchangeName="test_fanout_exchange";
+            String routingKey="dsadadsa";
             //5.通过channel发送数据
             String msg="hello ,rabbitmq";
-            channel.basicPublish(exchangeName,routingKey1,null,msg.getBytes());
-            channel.basicPublish(exchangeName,routingKey2,null,msg.getBytes());
-            channel.basicPublish(exchangeName,routingKey3,null,msg.getBytes());
+            channel.basicPublish(exchangeName,routingKey,null,msg.getBytes());
+            channel.basicPublish(exchangeName,routingKey,null,msg.getBytes());
+            channel.basicPublish(exchangeName,routingKey,null,msg.getBytes());
 
             //5.关闭连接
             channel.close();

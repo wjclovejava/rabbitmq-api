@@ -1,15 +1,15 @@
-package wjc.rabbitmq.rabbitmqapi.quickstart.direct;
+package wjc.rabbitmq.quickstart.fanout;
 
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
 
 /**
- * @description: direct 直连模式routingKey值相同
+ * @description: fanout  与routingKey无关
  * @author: wjc
  * @create: 2019-07-24 17:40
  **/
-public class DirectConsumer {
+public class FanoutConsumer {
 
 
     public static void main(String[] args) {
@@ -23,15 +23,17 @@ public class DirectConsumer {
             Connection connection = connectionFactory.newConnection();
             //3.connection创建Channel
             Channel channel = connection.createChannel();
-            String exchangeName="test_direct_exchange";
-            String routingKey="test.direct";
-            String queueName="test_direct_queue";
-            String exchangeType="direct";
+            String exchangeName="test_fanout_exchange";
+            String exchangeType="fanout";
+            //不设置路由键
+            String routingKey="";
+            String queueName="test_fanout_queue";
             //4.声明
             //声明交换机
             channel.exchangeDeclare(exchangeName,exchangeType,true,false,false,null);
             //声明队列
-            channel.queueDeclare(queueName,true,false,false,null);
+            channel.queueDeclare(queueName,false,false,false,null);
+            //建立绑定关系
             channel.queueBind(queueName,exchangeName,routingKey);
 
             //5.创建消费者

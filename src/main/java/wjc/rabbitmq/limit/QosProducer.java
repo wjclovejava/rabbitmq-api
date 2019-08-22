@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.limit;
+package wjc.rabbitmq.limit;
 
 import com.rabbitmq.client.*;
 

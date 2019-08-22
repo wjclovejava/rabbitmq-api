@@ -1,4 +1,4 @@
-package wjc.rabbitmq.rabbitmqapi.confirmListener;
+package wjc.rabbitmq.confirmListener;
 
 import com.rabbitmq.client.*;
 
